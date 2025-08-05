@@ -1,0 +1,24 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
+export default function DashboardPage() {
+  const router = useRouter();
+  const [userExist, setUserExist] = useState(false);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (!user) {
+      router.push("/auth");
+    } else {
+      setUserExist(true);
+    }
+  }, []);
+
+  if (!userExist) return null;
+
+  return (
+    <div>
+      <h1>Welcome to the dashboard</h1>
+    </div>
+  );
+}
