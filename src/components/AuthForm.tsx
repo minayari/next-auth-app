@@ -6,13 +6,17 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import Input from "./ui/Input";
 import Button from "./ui/Button";
+import styles from "./AuthForm.module.scss";
 
 export default function AuthForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<authFormData>({ resolver: yupResolver(authSchema) });
+  } = useForm<authFormData>({
+    resolver: yupResolver(authSchema),
+    mode: "onChange",
+  });
 
   const router = useRouter();
 
@@ -26,7 +30,7 @@ export default function AuthForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <Input
         lable="شماره موبایل"
         {...register("phone")}

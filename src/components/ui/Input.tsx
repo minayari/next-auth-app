@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import styles from "./Input.module.scss";
 
 interface inputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   lable: string;
@@ -8,10 +9,10 @@ interface inputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const Input = forwardRef<HTMLInputElement, inputProps>(
   ({ lable, error, ...props }, ref) => {
     return (
-      <div>
+      <div className={styles.inputWrapper}>
         <label>{lable}</label>
         <input ref={ref} {...props} />
-        {error && <p>{error}</p>}
+        {error && <p className={styles.error}>{error}</p>}
       </div>
     );
   }
