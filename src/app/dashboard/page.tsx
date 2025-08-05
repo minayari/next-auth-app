@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -14,7 +14,7 @@ export default function DashboardPage() {
     } else {
       setUserExist(true);
     }
-  }, []);
+  }, [router]);
 
   if (!userExist) return null;
 
