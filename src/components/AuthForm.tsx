@@ -1,6 +1,8 @@
+"use client";
+
 import { authFormData, authSchema } from "@/lib/validation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import Input from "./ui/Input";
 import Button from "./ui/Button";
@@ -25,7 +27,11 @@ export default function AuthForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Input lable="شماره موبایل" {...register("phone")} />
+      <Input
+        lable="شماره موبایل"
+        {...register("phone")}
+        error={errors.phone?.message}
+      />
       <Button type="submit">ورود</Button>
     </form>
   );

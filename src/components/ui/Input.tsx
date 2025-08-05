@@ -11,6 +11,7 @@ const Input = forwardRef<HTMLInputElement, inputProps>(
       <div>
         <label>{lable}</label>
         <input ref={ref} {...props} />
+        {error && <p>{error}</p>}
       </div>
     );
   }
